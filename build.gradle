@@ -1,0 +1,51 @@
+plugins {
+    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("io.micronaut.application") version "3.6.3"
+}
+
+version = "0.1"
+group = "com.example"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor("io.micronaut:micronaut-http-validation")
+    annotationProcessor("io.micronaut.openapi:micronaut-openapi")
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut:micronaut-jackson-databind")
+    implementation("io.micronaut:micronaut-session")
+    implementation("io.swagger.core.v3:swagger-annotations")
+    implementation("jakarta.annotation:jakarta.annotation-api")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    testImplementation("org.mockito:mockito-core")
+    implementation("io.micronaut:micronaut-validation")
+
+    // https://mvnrepository.com/artifact/com.google.http-client/google-http-client
+    implementation group: 'com.google.http-client', name: 'google-http-client', version: '1.42.3'
+
+
+}
+
+
+application {
+    mainClass.set("com.example.Application")
+}
+java {
+    sourceCompatibility = JavaVersion.toVersion("11")
+    targetCompatibility = JavaVersion.toVersion("11")
+}
+
+graalvmNative.toolchainDetection = false
+micronaut {
+    runtime("netty")
+    testRuntime("junit5")
+    processing {
+        incremental(true)
+        annotations("com.example.*")
+    }
+}
+
+
+
