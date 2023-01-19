@@ -13,15 +13,8 @@ repositories {
 dependencies {
     annotationProcessor("io.micronaut:micronaut-http-validation")
     annotationProcessor("io.micronaut.openapi:micronaut-openapi")
-    implementation("io.micronaut:micronaut-http-client")
-    implementation("io.micronaut:micronaut-jackson-databind")
-    implementation("io.micronaut:micronaut-session")
-    implementation("io.swagger.core.v3:swagger-annotations")
-    implementation("jakarta.annotation:jakarta.annotation-api")
-    runtimeOnly("ch.qos.logback:logback-classic")
-    testImplementation("org.mockito:mockito-core")
-    implementation("io.micronaut:micronaut-validation")
 
+    implementation("io.swagger.core.v3:swagger-annotations")
     // https://mvnrepository.com/artifact/com.google.http-client/google-http-client
     implementation group: 'com.google.http-client', name: 'google-http-client', version: '1.42.3'
 
